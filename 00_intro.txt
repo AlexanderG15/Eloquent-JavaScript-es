@@ -165,22 +165,22 @@ instrucción. Podría ser escrita en español como sigue:
 
 [source,text/plain]
 ----
-1. Guarda el número 0 en la locación de memoria 0.
-2. Guarda el número 1 en la locación de memoria 1.
-3. Guarda el valor de la locación de memoria 1 en la locación 2.
-4. Resta 11 del valor en la locación de memoria 2.
-5. Si el valor en la locación de memoria 2 es el número 0,
+1. Guarda el número 0 en la dirección de memoria 0.
+2. Guarda el número 1 en la dirección de memoria 1.
+3. Guarda el valor de la dirección de memoria 1 en la dirección 2.
+4. Resta 11 del valor en la dirección de memoria 2.
+5. Si el valor en la dirección de memoria 2 es el número 0,
    continúa con la instrucción 9.
-6. Suma el valor de la locación de memoria 1 al valor de la
-   locación de memoria 0.
-7. Suma 1 al valor de la locación de memoria 1.
+6. Suma el valor de la dirección de memoria 1 al valor de la
+   dirección de memoria 0.
+7. Suma 1 al valor de la dirección de memoria 1.
 8. Continúa con la instrucción 3.
-9. Devuelve el valor de la locación de memoria 0.
+9. Devuelve el valor de la dirección de memoria 0.
 ----
 
-(((legibilidad)))(((nombramiento)))(((variable)))Aunque eso es más leíble que
+(((legibilidad)))(((nombramiento)))(((variable)))Aunque eso es más legible que
 una sopa de bits, sigue sin ser agradable. Podría ayudar usar nombres en los números
-para las instrucciones y locaciones de memoria.
+para las instrucciones y direcciones de memoria.
 
 [source,text/plain]
 ----
@@ -205,7 +205,7 @@ trabajando en este momento. Las líneas que usan `comparación` son probablement
 las más raras. El programa quiere ver si `conteo` es igual a 11 para saber si
 puede terminar. A causa de que nuestra máquina hipotética es más bien primitiva,
 solo puede probar si un número es cero y tomar una decisión (o salto) basada
-en eso. Así que usa la locación de memoria etiquetada como `comparación` para
+en eso. Así que usa la dirección de memoria etiquetada como `comparación` para
 calcular el valor de `conteo - 11` y toma una decisión basada en ese valor.
 Las próximas dos líneas suman el valor de `conteo` al resultado e incrementan
 `conteo` en 1 cada vez que el programa ha decido que `conteo` no es todavía 11.
