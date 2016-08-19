@@ -9,7 +9,7 @@
 ____
 Y mi corazón brilla rojo debajo de mi
 delgada, translúcida piel y tienen que administrarme 10cc de JavaScript
-para hacerme regresar. (Responsdo bien a las toxinas en la sangre.) ¡Hombre,
+para hacerme regresar (respondo bien a las toxinas en la sangre). ¡Hombre,
 esa cosa te sacará de tus casillas!
 ____
 
@@ -21,33 +21,34 @@ hasta el punto en que podamos expresar alguna prosa significativa.
 
 == Expresiones y declaraciones ==
 
-(((grammar)))(((syntax)))(((code,structure
-of)))(((grammar)))(((JavaScript,syntax)))En el
+(((gramática)))(((sintaxis)))(((código,
+estructura de)))(((gramática)))(((JavaScript,sintaxis)))En el
 link:01_values.html#values[Capítulo 1], creamos algunos valores y después
-les aplicamos operadores para obtener nuevos valores. Creando valores como éste
+les aplicamos operadores para obtener nuevos valores. Crear valores de esta forma
 es una parte esencial de cada programa de JavaScript, pero esto es sólo
 una parte.
 
-(((literal expression)))Un fragmento de código que produce un valor es
+(((expresión literal)))Un fragmento de código que produce un valor es
 llamado una _((expresión))_. Cada valor que se escribe literalmente
 (tal como `22` o `"psicoanálisis"`) es una expresión. Una expresión
-entre ((paréntesis)) es también una expresión, como es un ((operador
+entre ((paréntesis)) es también una expresión, como un ((operador
 binario)) aplicado a dos expresiones o un operador unario aplicado a
-uno.
+una expresion.
 
-(((nesting,of expressions)))(((human language)))Esto muestra parte de la
-belleza de una interfaz basada en el lenguaje. Las expresiones se puede anidar en una forma
-muy similar a la forma de sub-frases en la que las lenguas humanas son anidada, y
-las sub-frase puede contener sus propias sub-frases, etc. Esto nos permite
-combinar expresiones para expresar cálculos arbitrariamente complejos.
+(((anidado de instrucciones)))(((lenguage humano)))Esto muestra parte de la
+belleza de una interfaz basada en el lenguaje. Las expresiones se pueden anidar
+en una forma muy similar a la forma de sub-frases en la que las lenguas humanas
+son anidadas, y las sub-frases pueden contener sus propias sub-frases, etc.
+Esto nos permite combinar expresiones para expresar cálculos
+arbitrariamente complejos.
 
-(((statement)))(((semicolon)))(((program)))Si una expresión
+(((declaración)))(((punto y coma)))(((programa)))Si una expresión
 corresponde a un fragmento de frase, una _declaración_ en JavaScript
 corresponde a una frase completa en un lenguaje humano. Un programa es
 simplemente una lista de declaraciones.
 
 (((syntax)))El tipo más simple de declaración es una expresión con un
-punto y coma después de ella. Se trata de un programa:
+punto y coma después de ella. Esto es un programa:
 
 [source,javascript]
 ----
@@ -55,50 +56,50 @@ punto y coma después de ella. Se trata de un programa:
 !false;
 ----
 
-Es un programa inútil, sin embargo. Una ((expresión)) puede ser contenida
-solo de producir un valor, que puede entonces ser utilizado por the "enclosing
-expression". Una ((declaración)) destaca por su cuenta y que equivale a algo
-sólo si afecta al mundo. Se podría mostrar algo en la
-pantalla que cuenta como cambiar el mundo o podría cambiar el
-estado interno de la máquina de una manera que afectará los estados
-que vienen despues de él. Estos cambios se llaman _((efecto colateral))s_. Las
-declaraciones en el ejemplo anterior solo producen los valores `1` y
-`verdadero` y después los tiran inmediatamente. Esto no deja ninguna impresión
-en el mundo en absoluto. Al ejecutar el programa, nada observable
-sucede.
+Es un programa inútil, sin embargo. Una ((expresión)) puede estar presente para
+sólo producir un valor, que puede entonces ser utilizado por la expresión que
+la contiene. Una ((declaración)) existe por sí sola y que equivale a algo
+sólo si afecta al mundo. Podría mostrar algo en la
+pantalla -que cuenta como cambiar el mundo_ o podría cambiar el
+estado interno de la máquina de estados de manera que afectará las
+declaraciones que vienen despues de ella. Estos cambios se
+llaman _((efectos colaterale))s_. Las declaraciones en el ejemplo anterior solo
+producen los valores `1` y `verdadero` y los desechan inmediatamente.
+Esto no deja ningún cambio en el mundo en absoluto. Al ejecutar el programa,
+nada observable sucede.
 
-(((programming style)))(((automatic semicolon
-insertion)))(((semicolon)))En algunos casos, JavaScript le permite
-omitir el punto y coma al final de una instrucción. En otros casos, tiene que
-estar allí, o el siguiente ((linea)) serán tratados como parte de la misma
+(((estilos de programación)))(((inserción automática de punto
+y coma)))(((punto y coma)))En algunos casos, JavaScript te permite
+omitir el punto y coma al final de una declaración. En otros casos, tiene que
+estar allí, o la siguiente ((linea)) será tratada como parte de la misma
 declaración. Las reglas para cuando se puede omitir con seguridad son algo
-complejo y propenso a errores. En este libro, cada declaración que necesita un
-punto y coma siempre será terminada por uno. Te recomiendo que hagas lo
-misma en sus propios programas, al menos hasta que haya aprendido más sobre
+complejas y propensas a errores. En este libro, cada declaración que necesite un
+punto y coma siempre será terminada por un punto y coma4. Te recomiendo que hagas lo
+mismo en tus propios programas, al menos hasta que hayas aprendido más sobre
 sutilezas involucradas en omitir el punto y coma.
 
 == Variables ==
 
-(((syntax)))(((variable,definition)))(((side effect)))(((memory))) ¿Cómo
-un programa de mantener un estado ((estado))? ¿Cómo recuerda
-cosas? Hemos visto cómo producir nuevos valores de viejos valores, pero
+(((sintaxis)))(((variable, definición)))(((efecto secundario)))(((memoria))) ¿Cómo
+mantiene un programa su ((estado)) interno? ¿Cómo recuerda algo?
+Hemos visto cómo producir nuevos valores de viejos valores, pero
 esto no cambia los valores antiguos, y el nuevo valor tiene que ser
 inmediatamente utilizado o se disipará de nuevo. Para atrapar y mantener los valores,
 JavaScript proporciona una cosa llamada _variable_.
 
 [source,javascript]
 ----
-var caught = 5 * 5;
+var atrapado = 5 * 5;
 ----
 
-(((var keyword)))Y eso nos da nuestra segunda clase de ((declaración)).
-La palabra especial (_((keyword))_) `var` indica que esta frase
-va a definir una variable. Es seguido por el nombre de la variable
+(((palabra clave var)))Y eso nos da nuestra segunda clase de ((declaración)).
+La palabra especial(_((palabra clave))_ o _((keyword))_) `var` indica que
+esta frase va a definir una variable. Es seguida por el nombre de la variable
 y, si queremos dar de inmediato un valor, con un operador de `=` y
 una expresión.
 
-La declaración anterior crea una variable llamada `caught` y se usa
-para agarrar el número que se produce al multiplicar 5 por 5.
+La declaración anterior crea una variable llamada `atrapado` y se usa
+para retener el número que se produce al multiplicar 5 por 5.
 
 Después de que una variable se ha definido, su nombre puede ser usado como una
 ((expresión)). El valor de esa expresión es el valor que la
@@ -106,81 +107,82 @@ variable alberga actualmente. He aquí un ejemplo:
 
 [source,javascript]
 ----
-var ten = 10;
-console.log(ten * ten);
+var diez = 10;
+console.log(diez * diez);
 // → 100
 ----
 
-(((subrayar el carácter)))(((signo de
-dólar)))(((variable,naming)))Los nombres de variables pueden ser cualquier palabra que no es
-una palabra reservada (tal como `var`). Ellos no pueden incluir espacios.
-Dígitos también pueden ser parte de la variable nombre—`catch22` es un nombre válido,
-por ejemplo-, pero el nombre no debe comenzar con un dígito. Un nombre de variable
-no puede incluir puntuacion, a excepción de los caracteres `$` y `_`.
+(((carácter guión bajo)))(((signo de
+dólar)))(((variable,naming)))Los nombres de variables pueden ser cualquier
+palabra que no sea una palabra clave (tal como `var`). Estos no pueden incluir
+espacios. Los dígitos también pueden ser parte de la variable nombre —`catch22`
+es un nombre válido, por ejemplo-, pero el nombre no debe comenzar con un dígito.
+Un nombre de variable no puede incluir puntuación, a excepción de los caracteres
+`$` y `_`.
 
-(((= operator)))(((assignment)))(((variable,assignment))Cuando una
-variable apunta a un valor, eso no quiere decir que está ligado a ese
-valor para siempre. El operador de `=` se puede utilizar en cualquier momento en variables
-existentes para desconectarlas de su valor actual y etenerlas
-apuntando a una nueva.
+(((operador =)))(((asignación)))(((variable,asiganción))Cuando una
+variable apunta a un valor, eso no quiere decir que está ligada a ese
+valor para siempre. El operador `=` se puede utilizar en cualquier momento
+en variables existentes para desconectarlas de su valor actual y apuntarlas
+a uno nuevo.
 
 [source,javascript]
 ----
-var mood = "light";
-console.log(mood);
-// → light
-mood = "dark";
-console.log(mood);
-// → dark
+var tono = "claro";
+console.log(tono);
+// → claro
+tono = "oscuro";
+console.log(tono);
+// → oscuro
 ----
 
-(((variable,modelo of)))(((tentáculo (analogía)))) Debieras
-imaginar variables como tentáculos, en lugar de las cajas. Ellas no
-_contienen _ valores; ellas _grasp_ them—two variables pueden referirse la
-mismo valor. Un programa puede acceder sólo los valores que todavía tiene a
-hold on. Cuando usted necesita recordar algo, haces crecer un tentáculo para
-afferarse a ello or you reattach one of your existing tentacles to it.
+(((variable,modelo de)))(((tentáculo (analogía)))) Podrías
+imaginar  las variables como tentáculos, en lugar de la cajas. Estas no
+_contienen_ valores; los _agarran_; dos variables pueden referirse al
+mismo valor. Un programa puede acceder sólo los valores que todavía mantiene detenidos.
+Cuando necesitas recordar algo, haces crecer un tentáculo para
+agarrarlo o cambias unos de tus tentáculos existentes para agarrarlo.
 
 image::img/octopus.jpg[alt="Variables as tentacles"]
 
 Veamos un ejemplo. Para recordar el número de dólares que Luigi
-aún te debe, se crea una variable. Y luego, cuando él te paga $ 35,
-tu das a esta variable un valor nuevo.
+aún te debe, se crea una variable. Y luego, cuando te paga $35,
+le das a esta variable un valor nuevo.
 
 [source,javascript]
 ----
-var luigisDebt = 140;
-luigisDebt = luigisDebt - 35;
-console.log(luigisDebt);
+var deudaDeLuigi = 140;
+deudaDeLuigi = deudaDeLuigi - 35;
+console.log(deudaDeLuigi);
 // → 105
 ----
 
 (((indefinido)))Cuando se define una variable sin darle un valor,
-el tentáculo no tiene nada de que enteder, por lo que termina en el aire. Si le preguntas
-por el valor de una variable vacía, obtendrá el valor de `undefined (indefinido)`.
+el tentáculo no tiene nada que sostener, por lo que termina en el aire. Si preguntas
+por el valor de una variable vacía, obtendrás el valor `undefined` (indefinido).
 
-(((var keyword)))Una sola `var` declaración puede definir múltiples
-variables. Las definiciones deben estar separados por comas.
+(((var keyword)))Una sola declaración `var` puede definir múltiples
+variables. Las definiciones deben estar separadas por comas.
 
 [source,javascript]
 ----
-var one = 1, two = 2;
-console.log(one + two);
+var uno = 1, dos = 2;
+console.log(uno + dos);
 // → 3
 ----
 
 == Palabras clave y palabras reservadas ==
 
-(((syntax)))(((implementos (palabra reservada))))(((interfaz (palabra
-reservada))))(((dejar palabras clave)))(((paquete (palabra reservada))))(((privado
-(palabra reservada))))(((protegido (palabra reservada))))(((publico (palabra
-reservada))))(((statico (palabra reservada))))(((operador vacío)))(((yield
-(palabra reservada))))(((palabra reservada)))(((variable,naming)))Palabras con
-un significado especial, como `var`, son _((palabra reservada))s_, y no se pueden ser
+(((sintaxis)))(((implements (palabra reservada))))(((interface (palabra
+reservada))))(((let (palabra reservada))))(((package (palabra reservada))))(((private
+(palabra reservada))))(((protected (palabra reservada))))(((public (palabra
+reservada))))(((static (palabra reservada))))(((operador vacío)))(((yield
+(palabra reservada))))(((palabra reservada)))(((variable, nombrado)))Palabras con
+un significado especial, como `var`, son _((palabras clave))_, y no pueden ser
 utilizadas como nombres de variables. También hay un número de palabras que son
-“reservado para uso” en ((futuras)) versiones de JavaScript. Estos también
-oficialmente no pueden ser utilizados como nombres de variables, aunque algunos
-entornos de JavaScript hacen que puedan. La lista completa de palabras clave y
+“reservadas para uso” en ((futuras)) versiones de JavaScript. Estas también
+están oficialmente no permitidas como nombres de variables, aunque algunos
+entornos de JavaScript las permiten. La lista completa de palabras clave y
 palabras reservadas es bastante larga.
 
 [source,text/plain]
@@ -193,98 +195,97 @@ protected public return static super switch this
 throw true try typeof var void while with yield
 ----
 
-No te preocupes por la memorización de estos, pero recuerda que esto podría ser
-el problema cuando una definición de variable no funciona como se esperaba.
+No te preocupes por memorizarlas, pero recuerda que esto podría ser
+el problema cuando una definición de variable no funcione como se esperaba.
 
 == El entorno ==
 
 (((entorno estándar)))La colección de variables y sus valores
-que existe en un momento dado se llama el _((entorno))_. cuando una
+que existe en un momento dado se llama el _((entorno))_. Cuando un
 programa se pone en marcha, este entorno no está vacío. Siempre contiene
-variables que forman parte de la lenguaje ((estándar)), y la mayoría de la
-tiempo, tiene variables que proporcionan formas de interactuar con el
-sistema de alrededores. por ejemplo, en un ((navegador)), hay variables
+variables que forman parte del lenguaje ((estándar)), y la mayoría del
+tiempo, contiene variables que proporcionan formas de interactuar con el
+sistema que lo contiene. Por ejemplo, en un ((navegador)), existen variables
 y funciones para inspeccionar e influir en la página web cargada en ese momento
-y leer ((ratón)) and ((teclado)) entrada.
+y leer entrada del ((ratón)) y del ((teclado)).
 
 == Funciones ==
 
-indexsee:[application (of functions),function application]
-indexsee:[invoking (of functions),function application]
-indexsee:[calling (of functions),function application]
-(((output)))(((function)))(((function,application)))(((alert
-function)))(((message box)))Una gran cantidad de los valores proporcionada en el
-entorno por defecto tienen el tipo _((funcion))_. Una función es un
-pedazo de programa envuelto en un valor. Tales valores pueden ser _aplicado_ con
-el fin de ejecutar el programa envuelta. Por ejemplo, en un ((navegador))
-entorno, la variable `alert` ejerce una función que muestra un poco
-((cuadro de diálogo)) con un mensaje. Se utiliza como esto:
+indexsee:[aplicación (de funciones),función de aplicación]
+indexsee:[invocación (de funciones),función de aplicación]
+indexsee:[llamado (de funciones),función de aplicación]
+(((salida)))(((función)))(((función,aplicación)))(((función
+alert)))(((caja de mensaje)))Una gran cantidad de los valores proporcionados en el
+entorno por defecto tienen el tipo _((function))_. Una función(function) es un
+pedazo de programa encerrado en un valor. Tales valores pueden ser _aplicados_ con
+el fin de ejecutar el programa envuelto. Por ejemplo, en un entorno de
+((navegador)), la variable `alert` contiene una función que muestra un pequeño
+((cuadro de diálogo)) con un mensaje. Se utiliza como sigue:
 
 [source,javascript]
 ----
-alert("Buenos días!");
+alert("¡Good Morning!");
 ----
 
 image::img/alert.png[alt="An alert dialog",width="8cm"]
 
-(((parameter)))(((function,application)))La ejecución de una función se
-llamado _invoking_, _llamar_, or _aplicar_ la. Usted puede llamar a un
-función poniendo ((paréntesis)) después de una expresión que produce una
-valor de la función. Por lo general, vamos a usar directamente el nombre de la variable
-que mantiene la función de. Los valores entre paréntesis le dan a
-el programa dentro de la función. En el ejemplo, la funcion de `alert`
+(((parametro)))(((función,aplicación)))La ejecución de una función es denominada
+_invocar_, _llamar_, o _aplicar_ la función. Puedes llamar a una
+función poniendo ((paréntesis)) después de una expresión que produce un
+valor de la función. Por lo general, se usa directamente el nombre de la variable
+que contiene la función. Los valores entre paréntesis se le pasan a
+el programa dentro de la función. En el ejemplo, la función `alert`
 utiliza la cadena que le damos como el texto que se mostrará en el cuadro de diálogo.
-Los valores dados a las funciones se denominan _((argumento))s_. La funcion
-de `alert` necesita solo uno de ellos, pero otras funciones pueden necesitar un
+Los valores dados a las funciones se denominan _((argumento))s_. La función `alert`
+necesita solo uno, pero otras funciones pueden necesitar un
 número diferente o diferentes tipos de argumentos.
 
-== The console.log function ==
+== La función console.log ==
 
-(((JavaScript console)))(((developer
-tools)))(((Node.js)))(((console.log)))(((output)))The `alert` function
-can be useful as an output device when experimenting, but clicking
-away all those little windows will get on your nerves. In past
-examples, we've used `console.log` to output values. Most JavaScript
-systems (including all modern web ((browser))s and Node.js) provide a
-`console.log` function that writes out its arguments to _some_ text
-output device. In browsers, the output lands in the ((JavaScript
-console)). This part of the browser interface is hidden by default,
-but most browsers open it when you press F12 or, on Mac, when you
-press Command-Option-I. If that does not work, search through the
-menus for an item named “web console” or “developer tools”.
+(((consola de JavaScript)))(((developer
+tools)))(((Node.js)))(((console.log)))(((salida)))(((output)))La función `alert`
+puede ser útil para imprimir cuando estamos experimentando, pero quitar del camino
+todas esas pequeñas ventanas puede desesperarte. En ejemplos pasados, hemos usado
+`console.log` para devolver valores. La mayoría sistemas JavaScript (incluyendo a
+todos los ((navegador))es web modernos y a Node.js) nos dan una función `console.log`
+que imprime sus argumentos en _algún_ dispositivo de salida de texto. En los navegadores
+la salida queda en la ((consola de JavaScript)). Esta parte del navegador está
+escondida por defecto, pero la mayoría de los navegadores la abren cuando presionas
+F12 o, en Mac, cuando presionas Command-Option-I. Si esto no funciona, busca en los
+menús un item llamado "Consola Web" o "Herramientas de Desarrollador".
+
 
 ifdef::interactive_target[]
 
-When running the examples, or your own code, on the pages of this
-book, `console.log` output will be shown after the example, instead of
-in the browser's JavaScript console.
+Cuando corras los ejemplos, o tu propio código, en las páginas de este libro,
+la salida de `console.log` será mostrada después del ejemplo, en vez de en la
+consola de JavaScript del navegador.
 
 endif::interactive_target[]
 
 [source,javascript]
 ----
 var x = 30;
-console.log("the value of x is", x);
-// → the value of x is 30
+console.log("el valor de x es", x);
+// → el valor de x es 30
 ----
 
-(((object)))Though ((variable)) names cannot contain ((period
-character))s, `console.log` clearly has one. This is because
-`console.log` isn't a simple variable. It is actually an expression
-that retrieves the `log` ((property)) from the value held by the
-`console` variable. We will find out exactly what this means in
-link:04_data.html#properties[Chapter 4].
+(((objeto)))Aunque los nombres de ((variable)) no pueden contener
+el ((caracter punto)), `console.log` claramente tiene uno. Esto es
+porque `console.log` no es una variable simple. Es en realidad una
+expresión que trae la propiedad `log` del valor mantenido por la
+variable `console`. Veremos que significa exactamente en el
+link:04_data.html#properties[Capítulo 4].
 
 [[return_values]]
-== Return values ==
+== Valores de Retorno ==
 
-(((comparison,of numbers)))(((return value)))(((Math.max
-function)))(((maximum)))Showing a dialog box or writing text to
-the screen is a _((side effect))_. A lot of functions are useful
-because of the side effects they produce. Functions may also produce
-values, and in that case, they don't need to have a side effect to be
-useful. For example, the function `Math.max` takes any number of
-number values and gives back the greatest.
+(((comparación,de números)))(((valor de retorno)))(((función
+Math.max)))(((máximo)))Mostrar un cuadro de diálogo o escribir texto
+en la pantalla es un _((efecto secundario))_. Muchas funciones son útiles porque
+producen valores, y en ese caso, no necesitan tener un efecto secundario para
+ser útiles. Por ejemplo, la función `Math.max` toma un número indeterminado de
+números y regresa el más grande.
 
 [source,javascript]
 ----
@@ -292,12 +293,12 @@ console.log(Math.max(2, 4));
 // → 4
 ----
 
-(((function,application)))(((minimum)))(((Math.min
-function)))When a function produces a value, it is said to _return_
-that value. Anything that produces a value is an ((expression)) in
-JavaScript, which means function calls can be used within larger
-expressions. Here a call to `Math.min`, which is the opposite of
-`Math.max`, is used as an input to the plus operator:
+(((función,aplicación)))(((minimo)))(((función
+Math.min))) Cuando una función produce un valor, se dice que _regresa_
+ese valor. Cualquier cosa que produce un valor es una ((expresión)) en
+JavaScript, lo que significa que puede ser usada dentro de expresiones
+más grandes. Aquí, una llamada a `Math.min`, que es lo opuesto a
+`Math.max`, es usada como entrada de un operador de suma:
 
 [source,javascript]
 ----
@@ -305,29 +306,29 @@ console.log(Math.min(2, 4) + 100);
 // → 102
 ----
 
-The link:03_functions.html#functions[next chapter] explains how to
-write your own functions.
+El link:03_functions.html#functions[próximo capítulo] explica como escribir
+tus propias funciones.
 
-== prompt and confirm ==
+== Pedir información y confirmar ==
 
-(((dialog box)))(((input)))(((browser)))(((confirm function)))Browser
-environments contain other functions besides `alert` for popping up
-windows. You can ask the user an OK/Cancel question using
-`confirm`. This returns a Boolean: `true` if the user clicks OK and
-`false` if the user clicks Cancel.
+(((cuadro de diálogo)))(((entrada)))(((navegador)))(((función confirm)))Los
+entornos de navegador tienen otras funciones más allá de `alert` para mostrar
+ventanas. Puedes preguntar al usuario una cuestión estilo OK/Cancelar usando
+`confirm`. Esto regresa un Booleano: `true` si el usuario hace click en OK y
+`false` si el usuario presiona en Cancelar.
 
 [source,javascript]
 ----
-confirm("Shall we, then?");
+confirm("¿Entonces, deberíamos?");
 ----
 
 image::img/confirm.png[alt="A confirm dialog",width="8cm"]
 
-(((input)))(((prompt function)))(((text input)))The `prompt` function
-can be used to ask an “open” question. The first argument is the
-question, the second one is the text that the user starts with. A line
-of text can be typed into the dialog window, and the function will
-return this text as a string.
+(((entrada)))(((función prompt)))(((entrada de texto)))La función `prompt`
+puede ser usada para hacer una pregunta "abierta". El primer argumento
+es la pregunta, el segundo es un texto con el que usuario inicia. Se puede
+escribir una línea de texto en el cuadro de diálogo, y la función regresará
+este texto como una cadena.
 
 [source,javascript]
 ----
@@ -336,123 +337,115 @@ prompt("Tell me everything you know.", "...");
 
 image::img/prompt.png[alt="An prompt dialog",width="8cm"]
 
-These two functions aren't used much in modern web programming, mostly
-because you have no control over the way the resulting windows look,
-but they are useful for toy programs and experiments.
+Estas dos funciones no son usadas mucho en la programación web moderna,
+principalmente porque no tienes control sobre la forma en que las ventanas
+resultantes se verán, pero son útiles para programas de prueba y experimentos.
 
-== Control flow ==
+== Control de flujo ==
 
-(((execution order)))(((program)))(((control flow)))When your program
-contains more than one ((statement)), the statements are executed,
-predictably, from top to bottom. As a basic example, this program has
-two statements. The first one asks the user for a number, and the
-second, which is executed afterward, shows the ((square)) of that
-number.
+(((orden de ejecución)))(((programa)))(((control de flujo)))Cuando tu
+programa contiene más de una ((sentencia)), las sentencias son ejecutadas (fácil de predecir), de arriba hacia abajo. Como un ejemplo básico, este programa
+tiene dos sentencias. La primera le pide un número al usuario, y la
+segunda, que se ejecuta después, muestra el ((cuadrado)) de ese número
 
 [source,javascript]
 ----
-var theNumber = Number(prompt("Pick a number", ""));
-alert("Your number is the square root of " +
-      theNumber * theNumber);
+var elNumero = Number(prompt("Dame un número", ""));
+alert("Tú número es la raíz cuadrada de " +
+      elNumero * elNumero);
 ----
 
-(((number,conversion to)))(((type coercion)))(((Number
-function)))(((String function)))(((Boolean
-function)))(((Boolean,conversion to)))The function `Number` converts a
-value to a number. We need that conversion because the result of
-`prompt` is a string value, and we want a number. There are similar
-functions called `String` and `Boolean` that convert values to those
-types.
+(((number,conversión a)))(((conversión de tipos)))(((función
+Number)))(((función String)))(((función Boolean)))(((Boolean,
+conversión a))) La función `Numero` convierte un valor a un número.
+Necesitamos esa conversión porque el resultado de `prompt` es un valor
+de cadena de texto (string), y queremos un número. Hay funciones similares
+llamadas `String` y `Boolean` que convierten valores a estos tipos.
 
-Here is the rather trivial schematic representation of straight
-control flow:
+Aquí está la trivial representación esquemática de un flojo de control recto.
 
 image::img/controlflow-straight.svg[alt="Trivial control flow",width="4cm"]
 
-== Conditional execution ==
+== Ejecución Condicional ==
 
-(((Boolean)))(((control flow)))Executing statements in straight-line
-order isn't the only option we have. An alternative is _((conditional
-execution))_, where we choose between two different routes based on a
-Boolean value, like this:
+(((Booleano)))(((flujo de control)))Ejecutar sentencia en línea recta no es
+la íunica opción que tenemos. Una alternativa es la _((ejecución condicional))_,
+en dondne escogemos entre dos rutas diferentes basados en un valor Booleano,
+como el siguiente:
 
 image::img/controlflow-if.svg[alt="Conditional control flow",width="4cm"]
 
-(((syntax)))(((Number function)))(((if keyword)))Conditional execution
-is written with the `if` keyword in JavaScript. In the simple case, we
-just want some code to be executed if, and only if, a certain
-condition holds. For example, in the previous program, we might want
-to show the square of the input only if the input is actually a
-number.
+(((sintaxis)))(((función Number)))(((if, palabra clave)))La ejecución condicional
+se escribe con la palabra clave `if` en JavaScript. En el caso sencillo,
+queremos que algo de código se ejecute si, y sólo si, cierta condición se cumple.
+Por ejemplo, en el programa previo, podríamos querer mostrar el cuadrado de
+la entrada sólo si la entrada es un número.
 
 [source,javascript]
 ----
-var theNumber = Number(prompt("Pick a number", ""));
-if (!isNaN(theNumber))
-  alert("Your number is the square root of " +
-        theNumber * theNumber);
+var elNumero = Number(prompt("Dame un número", ""));
+if (!isNaN(elNumero))
+  alert("Tu número es la raíz cuadrada de " +
+        elNumero * elNumero);
 ----
+Con esta modificación, si le das "queso", no se mostrará ninguna salida.
 
-With this modification, if you enter “cheese”, no output will be shown.
+La palbra clave `if` ejecuta o salta una sentencia dependiendo del valor
+de una expresión Booleana. La expresión de decisión se escribe después de
+la palbra clave, entre ((parántesis)), seguida por una sentencia a ejecutar.
 
-The keyword `if` executes or skips a statement depending on the value
-of a Boolean expression. The deciding expression is written after the
-keywords, between ((parentheses)), followed by the statement to execute.
+(((función isNaN)))La función `inNaN` es una función estándar de JavaScript
+que regresa `true` sólo si el argumento que le diste es `NaN`. Resulta que
+la función Number regresa `NaN` cuando le das una cadena que no 
+“a menos que  `elNumero` no sea un número, has esto”.
 
-(((isNaN function)))The `isNaN` function is a standard JavaScript
-function that returns `true` only if the argument it is given is
-`NaN`. The `Number` function happens to return `NaN` when you give it
-a string that doesn't represent a valid number. Thus, the condition
-translates to “unless `theNumber` is not-a-number, do this”.
-
-(((else keyword)))You often won't just have code that executes when a
-condition holds true, but also code that handles the other case. This
-alternate path is represented by the second arrow in the
-diagram. The `else` keyword can be used, together with `if`, to create
-two separate, alternative execution paths.
+(((palabra clave else)))A menudo no sólo tendrás código que se ejecute cuando
+una condición sea verdadera, sino también que maneje el otro caso. Este camino
+alternativo es representado por la segunda flecha en el diagrama. La palabra
+clave `else` puede ser usada, junto con `if`, para crear dos rutas de ejecución
+separadas y alternativas.
 
 [source,javascript]
 ----
-var theNumber = Number(prompt("Pick a number", ""));
-if (!isNaN(theNumber))
-  alert("Your number is the square root of " +
-        theNumber * theNumber);
+var elNumero = Number(prompt("Dame un número", ""));
+if (!isNaN(elNumero))
+  alert("Tu número es la raíz cuadrada de " +
+        elNumero * elNumero);
 else
-  alert("Hey. Why didn't you give me a number?");
+  alert("Hey. ¿Por qué no me diste un número?");
 ----
 
-(((if keyword,chaining)))If we have more than two paths to choose
-from, multiple `if`/`else` pairs can be “chained” together. Here's an
-example:
+(((palabra clave if ,encadenado)))Si tenemos más de dos caminos a escoger,
+varios pares de `if`/`else` pueden ser "encadenados". Aquí hay un ejemplo:
 
 [source,javascript]
 ----
-var num = Number(prompt("Pick a number", "0"));
+var num = Number(prompt("Dame un número", "0"));
 
 if (num < 10)
-  alert("Small");
+  alert("Chico");
 else if (num < 100)
-  alert("Medium");
+  alert("Mediano");
 else
-  alert("Large");
+  alert("Grande");
 ----
 
-The program will first check whether `num` is less than 10. If it is,
-it chooses that branch, shows `"Small"`, and is done. If it isn't, it
-takes the `else` branch, which itself contains a second `if`. If the
-second condition (`< 100`) holds, that means the number is between 10
-and 100, and `"Medium"` is shown. If it doesn't, the second, and last,
-`else` branch is chosen.
+El programa primero checará sí `num` es menor que 10. Si lo es, escoge 
+ese camino, muestra `"Chico"` y termina. Si no lo es, toma el el branch
+`else`, que en sí mismo contiene un segundo `if`. Si la segunda condición
+(`< 100`) se cumple, significa que el número está entre 10 y 100, y se
+muestra `"Mediano"`. Si no lo es, el segundo y último `else` es escogido.
 
-The flow chart for this program looks something like this:
+El diagrama de flujo para este programa es algo así:
 
 image::img/controlflow-nested-if.svg[alt="Nested if control flow",width="4cm"]
 
-[[loops]]
-== while and do loops ==
+[[bucles]]
+==  bucles while y do ==
 
-(((even number)))Consider a program that prints all even numbers from
-0 to 12. One way to write this is as follows:
+(((número par)))Piensa en un programa que imprima todos
+los números primos del 1 al 12. Una manera de escribirlo
+sería como sigue:
 
 [source,javascript]
 ----
@@ -465,11 +458,10 @@ console.log(10);
 console.log(12);
 ----
 
-(((control flow)))That works, but the idea of writing a program is to
-make something _less_ work, not more. If we needed all even numbers
-less than 1,000, the previous would be unworkable. What we need is a
-way to repeat some code. This form of control flow is called a
-_((loop))_:
+(((control de flujo)))Eso funciona, pero la idea de escribir un programa es
+trabajar _menos_, no más. Si necesitamos todos los números menores que
+1,000, lo anterior sería imposible de trabajar. Lo que necesitamos es una
+forma de repetir algo de código. Esta forma de control de flujo es llamada _((bucle))_:
 
 image::img/controlflow-loop.svg[alt="Loop control flow",width="4cm"]
 
@@ -550,16 +542,17 @@ To reflect this, the test appears after the body of the loop:
 [source,javascript]
 ----
 do {
-  var name = prompt("Who are you?");
-} while (!name);
-console.log(name);
+  var yourName = prompt("Who are you?");
+} while (!yourName);
+console.log(yourName);
 ----
 
 (((Boolean,conversion to)))(((! operator)))This program will
 force you to enter a name. It will ask again and again until it gets
 something that is not an empty string. Applying the `!` operator will
 convert a value to Boolean type before negating it, and all strings
-except `""` convert to `true`.
+except `""` convert to `true`. This means the loop continues going round
+until you provide a name that is not the empty string.
 
 == Indenting Code ==
 
